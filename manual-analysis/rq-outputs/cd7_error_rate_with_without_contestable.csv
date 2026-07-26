@@ -1,0 +1,4 @@
+Model,N (CD ECMs),TP,FN,FP,MC,Contestable Cases,True Errors,Error Rate (w/ AC),Error Rate (w/o AC)
+DeepSeek,38,21,10,0,7,9,8,44.7%,21.1%
+GPT,38,17,5,0,16,14,7,55.3%,18.4%
+Qwen3,38,16,8,0,14,10,12,57.9%,31.6%

@@ -1,0 +1,4 @@
+model,false_CD_predictions,total_CD_predictions,attractor_rate
+DeepSeek,9,30,30.0%
+GPT,14,31,45.2%
+Qwen3,10,26,38.5%

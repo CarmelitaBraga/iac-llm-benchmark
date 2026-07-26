@@ -1,0 +1,133 @@
+hash,oracle-normalized,model-normalized,outcome-type,mechanism-primary-tag,mechanism-secondary-tag,word-note
+acceb5180a6c262fcc502b7ff16fd9c708fd8eca,NO_DEFECT,NO_DEFECT,TP,,,
+bba8ba7bff3ebecf1e23460b444a97d95f1c3a39,DEPENDENCY,NO_DEFECT,FN,INPUT_DEPENDENCE_FAILURE,DEGENERATE_OUTPUT,Model just repeated commit message.
+bcd4ee9909d396b04ad918fff7e140bd854eeb28,IDEMPOTENCY,NO_DEFECT,FN,INPUT_DEPENDENCE_FAILURE,DEGENERATE_OUTPUT,Model just repeated first part of commit message.
+48a1189077d2edd5d9be04eb49f52093f9bc3e01,NO_DEFECT,NO_DEFECT,TP,,,
+cb67003e23a1f359fe0a08e83fab38d5bf1276e2,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+7612276ef1a82971b164712fce8f26f73cac82ef,CONFIGURATION_DATA,NO_DEFECT,FN,INPUT_DEPENDENCE_FAILURE,DEGENERATE_OUTPUT,Model just repeated first part of commit message.
+af83c4d7ec0d55322f3826b2c14b035871be7ec3,NO_DEFECT,NO_DEFECT,TP,,,
+0371b61b0407893cbe456edabe56fab200f3066f,DEPENDENCY,NO_DEFECT,FN,INPUT_DEPENDENCE_FAILURE,DEGENERATE_OUTPUT,Model just repeated commit message.
+8f6fd48bf45aba59055e34303d0b456cf437c833,CONFIGURATION_DATA,NO_DEFECT,FN,INPUT_DEPENDENCE_FAILURE,DEGENERATE_OUTPUT,Model just repeated commit message.
+51361d5e2898d4d79e68cfe0e50f1c691ae17ed8,CONFIGURATION_DATA,NO_DEFECT,FN,INPUT_DEPENDENCE_FAILURE,DEGENERATE_OUTPUT,Model just repeated commit message.
+506330296e685305b9eaae5450bf616413b4ebb7,NO_DEFECT,CONFIGURATION_DATA,FP,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model mixed configuration data with documentation defect, with no clear support."
+1b64b779a8d5cf651d962176c12f8ac1f6e9fe9e,SECURITY,SECURITY,TP,,,
+fe70605ed9c06b2efd8675da5567d1dd2362986c,SYNTAX,SYNTAX,TP,,,
+698799eab4a41d99e38753f6e9170eebf54a07a1,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+5475a129d25740df814250cd2cf42c10e368eaaf,CONFIGURATION_DATA,SYNTAX,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model correctly identified the ECM defect, unlike the oracle raters, which was about a syntax error correction, not the configuration data that was being adjusted (not changed) in the diff."
+86103c65469e9009934b5a31ac04ee3f88e3bd17,DOCUMENTATION,NO_DEFECT,FN,CONTESTABLE_CASE,DEFECT_VS_FEATURE,"Model correctly described changes, but classified the version bump preparation as no defect, since it was not correcting anything, rather preparing docs for version release."
+ea535a275570928b9546197eb8a2aa0e13e4b571,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+7348bc0177c2a4074a224aa8b9839018fe924e4a,CONFIGURATION_DATA,CONDITIONAL,MC,TAXONOMY_MAPPING_FAILURE,CATEGORY_BOUNDARY_AMBIGUITY,"Model correctly described change, but associated ECM with conditional defect probably due to scope confusion and overlap of prompt definition."
+9464f26dacdf4d7af4d61eabda1fd7dea141e855,DEPENDENCY,SYNTAX,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model described defect fix, despite oracle classification as dependency defect."
+f573c71387c1dbaea25bc3dc83a656e1f7a6092a,DOCUMENTATION,SYNTAX,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model classified it as a syntax defect, instead of documentation, since it's changing a go file."
+0420d1bcd31766b7c6696d33f6fb3d9e15e2348d,NO_DEFECT,NO_DEFECT,TP,,,
+eb1445f057daca7472517ecd176dec8903dff87a,CONFIGURATION_DATA,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,CAUSAL_MISUNDERSTANDING,"The model described the changes, but labeled ECM as no defect, despite having a fix mention in commit message."
+d65b434ac2dd95d9b7b9fb356e3a4642060bcc0a,NO_DEFECT,NO_DEFECT,TP,,,
+2cc7dcfa522d32fea8b02ac122a9567a332c18f0,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+5d53ae97c9a66737ae1e2610104a5d345a1559a2,NO_DEFECT,NO_DEFECT,TP,,,
+643f6e61843d9cd8845542129e9ad639abd42979,DOCUMENTATION,DOCUMENTATION,TP,,,
+e2dc6dd43ee9744b0ca420911a7731306c85b823,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+f5f7ed9dddb025a9df10563e19236ae6968acf08,SERVICE,DEPENDENCY,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"Model correctly described change, but interpreted it as a dependency error (which is defendable given prompt definition and ECM nature)."
+08caca6592779bf64803bcbc65735da4578103de,DOCUMENTATION,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,CAUSAL_MISUNDERSTANDING,Model seems to have disregarded clear intent of fix in the commit message.
+2dcffba5f5ef8509499cf977849be66233346d2e,CONFIGURATION_DATA,SECURITY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model focused on the security aspect of the S3 configuration fix, which replaced s3 previous secret access."
+3552eaea5ee128e070a04190979ac5d7b484ec8b,NO_DEFECT,NO_DEFECT,TP,,,
+e185fa4e9b1f4710ff9502960b2fe07579174db9,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+4b15c4646bfe8e9844fb29ebdc68818bbb201a48,NO_DEFECT,DEPENDENCY,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,Model interpreted dependency in the order of actions as dependency of resources.
+ea9961df26ed7e9d8ae2f248875f5e0c09469641,SECURITY,SECURITY,TP,,,
+0f7e0a80ce28ee62ec7230a90f3e6ee57046cfa4,CONFIGURATION_DATA,SERVICE,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,Model selected the close category that would apply as well. Correctly described change.
+cee1b30330031c2166f6337f9fb717ed74d8e314,SERVICE,SERVICE,TP,,,
+4f82a995f6c99fe65684f997b125fe1f2f535ffd,CONFIGURATION_DATA,SECURITY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model highlighted SSL configurations, that are more related to security than config defect."
+9340a4d8927fbe2e3f126661daa1f94cfe382a5e,NO_DEFECT,NO_DEFECT,TP,,,
+2d803a9b97c5dd4102b4f4041087b15d7d5f06d2,SYNTAX,DOCUMENTATION,MC,TAXONOMY_MAPPING_FAILURE,WRONG_ADDRESSING_CATEGORY,"Model described and even mentioned most important change (syntax), but labeled it as a documentation defect."
+4e2a308c86798b6285c7bf5da88dd8cc316c11a8,NO_DEFECT,NO_DEFECT,TP,,,
+f5729169bb18f9ab4847b8b30c3292b444ceba2b,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+e37f5561b71661d90ea465b551f3042b2fb27e15,SERVICE,CONFIGURATION_DATA,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"The model correctly described the change, the configuration data defect was a possible choice for this ECM, based on definition."
+b10987c494ad144859f884c36ce5a0a142bcf733,CONFIGURATION_DATA,SYNTAX,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,Model pointed to syntax defect and disregarded configuration data changes (majority)
+47ff5624f666715850b97b340f32c435dd503907,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+e1d16954fe6efeb992c679871b280da17a44e554,CONFIGURATION_DATA,SECURITY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model mentioned change and the Oracle label, but classified it as a security defect."
+9ee738f009ab26daf9c4205b53b097ff6fab8368,SYNTAX,SYNTAX,TP,,,
+5b554ca750ac5988263543b65ec415ea8581efc0,CONDITIONAL,CONFIGURATION_DATA,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Wrong label and wrong pov of the real problem, despite commit message mentioning important changes, which were completely overlooked by model."
+24762e34396d243f6cf5add5c3fc7343459c8a3f,SERVICE,SECURITY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model focused on the semantics of sanction check, labeling ECM change as a security defect fix."
+d4d9d93ed8279a41f95a0f0cef537b7b605bcef7,SECURITY,CONFIGURATION_DATA,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"Model correctly described changes, emphasizing the configuration data changes."
+dc0affc60528146a2b36d5234d717c826f30dae2,CONDITIONAL,CONDITIONAL,TP,,,
+25400158d35c61b2a5cdf2ecc7b3abdaba118301,CONFIGURATION_DATA,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model considered only refactoring, without taking in account author message about vault policy fix."
+9a2c0436152f37b139d426fb0638c6c06640186d,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+ecd64756a8e80b3c9e06e0916e12225daa2df3c7,NO_DEFECT,DEPENDENCY,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Although most part of ECM is removing resources, model focused on provider configuration data changes, especifically regarding artifact path change to specify provider."
+52ba8f9695599593743640b073c0b4c380624e99,DEPENDENCY,DEPENDENCY,TP,,,
+cb41a081faf9b429c712cacd7ad26ac080faeed1,CONFIGURATION_DATA,DEPENDENCY,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,Model interpreted configuration data change as a correct specification of dependency (as the defect was corrected).
+3b4c6fc25597e4f57982df4fd75f2232f07e2768,NO_DEFECT,SYNTAX,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,Model correctly described change and label.
+0042fb9d22a6649eb475d7ef6a16e534afcf7e1e,DEPENDENCY,IDEMPOTENCY,MC,TAXONOMY_MAPPING_FAILURE,WRONG_ADDRESSING_CATEGORY,"Model completely described changed, mentioned correct defect in reason, but assigned the wrong idempotency category. It seemed more like an error of final classification than of semantic reasoning."
+2f4b88e93711910f786e67aad6425f291ccd4c8a,SECURITY,SECURITY,TP,,,
+b965c5f6835d78e27ae1c92ee191fe3132e26300,SERVICE,DEPENDENCY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,Model correctly described changes and labeled ECM as dependency defect.
+725c867a181ab85241f37fc3e989a1aedc1ccd83,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+41d0860c2c71e4a67189e56f745d2f312502612d,DEPENDENCY,NO_DEFECT,FN,CONTESTABLE_CASE,DEFECT_VS_FEATURE,"Model described change, but labeled it as no defect, since it was just a change motivated by provider switch."
+b7dd62be2cbc5c437e8e0ffcb45c8bddcb3835b1,NO_DEFECT,NO_DEFECT,TP,,,
+20aa5505769458d6925888f0b578d714f8884eb9,DOCUMENTATION,DOCUMENTATION,TP,,,
+c02aaf118c5f6f777f7b0c565ec4ac378ad0a509,NO_DEFECT,NO_DEFECT,TP,,,
+51466fe8af33a95ab16aa5a8c508ba3be089c41c,DOCUMENTATION,NO_DEFECT,FN,CONTESTABLE_CASE,SPECIFIC_DEFECT,This is not a defect fix; the model correctly identified it.
+6183e8376d12644d30151227ed19f35d1b2433b3,IDEMPOTENCY,DEPENDENCY,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model failed to completely describe change and spot purpose of the change, despite that being present in the commit message. It's even more odd that it mentioned a ""fix"" in the justification."
+1ce18ea7eb08d974be4838d5fdfb63d20782de16,CONFIGURATION_DATA,CONDITIONAL,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,Model clearly spotted configuration related to wrong conditional settings.
+e3759dcd576de9c8bded56e0edaa0c0874830247,SYNTAX,SYNTAX,TP,,,
+4d7e7fc35ca802f8be2c75f9d247d0a273b76048,NO_DEFECT,CONFIGURATION_DATA,FP,SEMANTIC_REASONING_FAILURE,CAUSAL_MISUNDERSTANDING,"Model failed to interpret author's semantics of the configuration data removal of unused ports, therefore, no defect fixed."
+9d9091d4e94e17c74c728451da74260b43e59832,NO_DEFECT,NO_DEFECT,TP,,,
+81e610abe808ccc3052bd727a51c6fe4e23351c0,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+7ff277a8785328687efb378c2c648b67d852c4ce,CONDITIONAL,CONDITIONAL,TP,,,
+874d248d71158bda6c3b06d7b080d6a39c550a32,DEPENDENCY,DEPENDENCY,TP,,,
+5137f17f3fc174c54d9c4d901a3c53692ee751d0,NO_DEFECT,NO_DEFECT,TP,,,
+15b174657ded9b87454e388bd234795c430d0c7a,NO_DEFECT,SYNTAX,FP,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model overlooked intent and scope of the change. No defect are being fixed, just a lint format was executed."
+77c466fdea071563c1a276ce8d362c2b7ccc591a,DEPENDENCY,SYNTAX,MC,SEMANTIC_REASONING_FAILURE,CAUSAL_MISUNDERSTANDING,"Model correctly described change, but failed to attribute that to a dependency fix."
+98ddb9872ee512c99c1b69bc270c6a824fc538f9,CONFIGURATION_DATA,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model was off, focused on the wrong part of the ECM, overlooking real fixed defects."
+550d0cc927df1a62d69acdb184576ec3a583e5f8,DEPENDENCY,SYNTAX,MC,TAXONOMY_MAPPING_FAILURE,CATEGORY_BOUNDARY_AMBIGUITY,"Model described change, but identified the defect as a syntax problem, which only happened to fix a dependency aspect."
+466d84b5693747894a582424030ba3231b7fab89,SECURITY,SECURITY,TP,,,
+328158b7d8202c04d95adb209f67f8d376218640,SYNTAX,DEPENDENCY,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model partially described change, but overlooked syntax and configuration data changes, not specifying defects."
+9e00c4192170771ddcfdede3ac8f5c5be27cb522,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+f469f0cc078bbd617fc676506ab47c2840acd82d,SERVICE,NO_DEFECT,FN,CONTESTABLE_CASE,DEFECT_VS_FEATURE,"Model described change and identified it as a no defect, but rather a refactoring of vault config."
+cdac6d7976ba574f04e866c2562c48d36a281c3b,SYNTAX,SYNTAX,TP,,,
+976def3faca6418437c095b3d0c5d81d24f99c69,IDEMPOTENCY,IDEMPOTENCY,TP,,,
+b2471ed7b785918435a1176bdd9f6600e274f5e9,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+b6d9fa9898e9ae2e2054effc8e500a60acf8b4c3,CONFIGURATION_DATA,DEPENDENCY,MC,TAXONOMY_MAPPING_FAILURE,CATEGORY_BOUNDARY_AMBIGUITY,"The model correctly described change, but mixed labels, despite mentioning ""configuration"" in the justification."
+8b8963398af55a9c580200212a12044d45a3f28e,SERVICE,NO_DEFECT,FN,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"Model correctly described change, but classified it as no defect (since it's about a dead code removal)."
+cf0c6e46683b8dc9638f12a28fcb444865aede75,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+ace64b299b455e620ba8fe010cc95456c60bc730,NO_DEFECT,SECURITY,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,"The model focused on the permission stated by author, despite the commit being marked as a ""feat""; it correctly described change."
+339c5e539b03c32aed03f020d5b118336f9a9524,NO_DEFECT,NO_DEFECT,TP,,,
+b44278cfc415fb4c1f59b03c6b77dfacd4785102,DOCUMENTATION,NO_DEFECT,FN,CONTESTABLE_CASE,DEFECT_VS_FEATURE,If it's about a defect fix or a simple refactoring of docs is not clear. Model opted to label it as no defect.
+b9292853ba2ec5c3d181a7bafe5136b1b70cb479,SYNTAX,SYNTAX,TP,,,
+d1522fa1027446de10daa4c58db54db64e918de7,DEPENDENCY,DEPENDENCY,TP,,,
+65ebe27f12cc6fee6fcc7e02a2a30d55f5f9c91d,SERVICE,SERVICE,TP,,,
+aa0970f2b5ace59f2df41dd29d2b1f9236652bd6,CONFIGURATION_DATA,NO_DEFECT,FN,CONTESTABLE_CASE,DEFECT_VS_FEATURE,"Model did not spot a defect fix, but a feature/maintainability addition."
+5337e5f8413c101317e307000fd1b2312e9d2b2e,DEPENDENCY,DEPENDENCY,TP,,,
+d2a762b5b44b75bc28c056e78ac68efa555f3e25,NO_DEFECT,DEPENDENCY,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,Model correclty spotted defect fix.
+4e3c67420c605187815dd5d4accad05904a791fd,NO_DEFECT,SECURITY,FP,CONTESTABLE_CASE,DEFECT_VS_FEATURE," Model described change and interpreted it as a security fix, since added a safe default to FargateService networking."
+327a5d19ae578fe338778cfc657b3ad8b651aa7c,CONFIGURATION_DATA,DEPENDENCY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"The model described change fix as a dependency defect since it changes configuration to meet EKS cluster requirements (model mention ""configuration"" in its reason)."
+713ceda318ccf45b0029fdfd32115084e1bd0667,NO_DEFECT,NO_DEFECT,TP,,,
+be7d90e9f73599e113d566df8a2ed7251f13ffe2,DEPENDENCY,DEPENDENCY,TP,,,
+7b07c07de03612f801f5d35728a2e4ffe65c0599,CONFIGURATION_DATA,CONDITIONAL,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model misinterpreted scope of the change, focusing on a status code that was inside a conditional block, not justifying its label."
+995374b472e0b40b96b38bb0ed5a3bf484e27de5,SERVICE,CONFIGURATION_DATA,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model focused in a specific part of the change, specifically an API key retrieval strategy. However, there was a lot more to consider."
+54bf658d9a3ca02c946b360f1aaf764f69a40ae7,DEPENDENCY,DEPENDENCY,TP,,,
+cd8eee5db511b4fd6f2b84b7a7be19dfb82cd06f,IDEMPOTENCY,IDEMPOTENCY,TP,,,
+60501930a889be7d0ab7da0b7f3b1ff2ff29e92e,IDEMPOTENCY,IDEMPOTENCY,TP,,,
+2913893702f4856ab43955b682c3db7daf80f575,SYNTAX,SYNTAX,TP,,,
+d58ff8d284766e824f8ae74542591001096e4421,SYNTAX,DOCUMENTATION,MC,TAXONOMY_MAPPING_FAILURE,WRONG_ADDRESSING_CATEGORY,"Model correctly described change and even mentioned ""typo"" in its justification, but labeled ECM as a documentation defect."
+dc1b333f2bd35dca99017562e24572ea39da37d8,DOCUMENTATION,DEPENDENCY,MC,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model focused on dependency fix, rather than documentation one."
+e8e0151596d860f7bac99ab46b13a07701d3e26c,DEPENDENCY,DEPENDENCY,TP,,,
+190ea08ab7c58ee90521e2cc89676de36291a14f,NO_DEFECT,CONFIGURATION_DATA,FP,CONTESTABLE_CASE,DEFECT_VS_FEATURE,"Model correctly described changes in ECM, labeling it as configuration data (change in default value of AZs and in conditional check)."
+f10e90f834b592809a5a9fe95ad56afeba3b51e5,CONDITIONAL,CONDITIONAL,TP,,,
+ba80eff773ff4f116a71e1fd199dba15cc69f23e,SERVICE,SERVICE,TP,,,
+bd2972861827940fe5cbd16c3fd5fa8856c59af2,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+54534fa839439e94411816aa104fc0abcc51e6a0,CONFIGURATION_DATA,CONFIGURATION_DATA,TP,,,
+417037c84f3f9a0864e60cace5f3c3aacd654581,CONFIGURATION_DATA,CONDITIONAL,MC,TAXONOMY_MAPPING_FAILURE,WRONG_ADDRESSING_CATEGORY,"Model correctly described change, but assigned a label without evidence (mismatch between what was being labeled and justified)."
+00eb6119505380832189c0f69c5074417fd2ae78,NO_DEFECT,DEPENDENCY,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,Model correctly identified defect that was corrected by this commit.
+855f7c950b75f3b3296bc500641c6b8d48068b14,SERVICE,CONFIGURATION_DATA,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"Model correctly described change, pointing out a defect in the configuration."
+18359e94abcc68b34891ce57752d0209d27e4126,CONFIGURATION_DATA,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,CAUSAL_MISUNDERSTANDING,"Model correctly describe changes, but labeled ECM as no defect. At the end, interpreted it as a defect injection (saying ""without introducing defects"")."
+1443a17090ee7407c9d9dfa34ae4698e5d2aeaa5,DOCUMENTATION,NO_DEFECT,FN,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"Model correctly spotted only lint changes, no real defect being fixed."
+89e3616548b372044367872736ec6a5ae339bc13,NO_DEFECT,NO_DEFECT,TP,,,
+8e6afacd062988f9507394d791be4aed0a963f6a,NO_DEFECT,CONFIGURATION_DATA,FP,CONTESTABLE_CASE,DEFECT_VS_FEATURE,"Model outlines change in configuration data, relating to user intent."
+c95cf4402c8d3c1f71440c566a0b3d8caa2090b2,CONDITIONAL,CONDITIONAL,TP,,,
+13c1baf7882b50a3a076c6dee442f0785659fa41,DOCUMENTATION,SECURITY,MC,SEMANTIC_REASONING_FAILURE,CAUSAL_MISUNDERSTANDING,"Model correctly described change, but failed to outline this as a feature instead of a defect fix (despite author expressing this in commit message)."
+2664dbcc87c73cb17c541878dea1c0d5e91b57a0,DOCUMENTATION,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,Model failed to link change description to correct documentation label.
+2bbe46a091f677134448fef80e855c2ec5889ad4,SERVICE,DEPENDENCY,MC,TAXONOMY_MAPPING_FAILURE,WRONG_ADDRESSING_CATEGORY,"Model correctly described change intent but linked ECM to dependency defect, confusing defect detection (service) with mean to fix it (dependency)."
+c985b879fbed067e615af9c7ee257ef54d939c14,DEPENDENCY,SYNTAX,MC,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,"Model failed to label ECM with a broader perspective. Instead, model briefly describe a change in a single file, in spite of mentioning change intent of breaking change."
+65d5be386d81da81f9fbaee07099776720c602c0,SYNTAX,SYNTAX,TP,,,
+4805b28bf65365217bcf4f06ab51c7e54b689949,CONFIGURATION_DATA,SECURITY,MC,CONTESTABLE_CASE,TAXONOMY_OVERLAP,"Given commit topic, defect definition, model correctly described change and labeled it as a security defect fix."
+c678e6762b3ea2085996db43b48b93b1344a37ab,NO_DEFECT,CONFIGURATION_DATA,FP,TAXONOMY_MAPPING_FAILURE,CATEGORY_BOUNDARY_AMBIGUITY,"Model correctly described change, labeling a configuration data defect, despite author stating feature addition in the commit message."
+f460b2723878c5babd6ddba016d56f4dbb5b03e1,DEPENDENCY,NO_DEFECT,FN,SEMANTIC_REASONING_FAILURE,SCOPE_CONFUSION,Model completely overlooked changes and even author commit messages.
+46d2178779443a4fb3a5368b218eb52ab4dc7feb,NO_DEFECT,SECURITY,FP,CONTESTABLE_CASE,SPECIFIC_DEFECT,"Model correctly described change and intent, labeling ECM as a security defect fix."

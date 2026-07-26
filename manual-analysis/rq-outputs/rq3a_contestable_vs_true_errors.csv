@@ -1,0 +1,4 @@
+model,Contestable case,True error,True positive
+DeepSeek,37,30,65
+GPT,46,23,63
+Qwen3,36,34,62

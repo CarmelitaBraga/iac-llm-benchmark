@@ -1,0 +1,4 @@
+model,TP,FN,FP,MC,Total Errors,Error Rate
+DeepSeek,65,34,11,22,67,50.8%
+GPT,63,17,15,37,69,52.3%
+Qwen3,62,21,14,35,70,53.0%

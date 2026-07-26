@@ -1,0 +1,133 @@
+hash,defect_category,reason
+acceb5180a6c262fcc502b7ff16fd9c708fd8eca,DEPENDENCY,Updated Google Beta Terraform Provider version from v3.57.0 to resolve compatibility issues.
+bba8ba7bff3ebecf1e23460b444a97d95f1c3a39,NO_DEFECT,Upgraded TypeScript ESLint packages and muted some rules for better maintainability.
+bcd4ee9909d396b04ad918fff7e140bd854eeb28,IDEMPOTENCY,Fixed non-determinism in Python dynamic provider serialization to prevent spurious diffs.
+48a1189077d2edd5d9be04eb49f52093f9bc3e01,NO_DEFECT,Added test case for EIP tag propagation without fixing a defect.
+cb67003e23a1f359fe0a08e83fab38d5bf1276e2,CONFIGURATION_DATA,Corrected API ID reference in API Gateway base path mapping to point to correct REST API resource.
+7612276ef1a82971b164712fce8f26f73cac82ef,CONFIGURATION_DATA,Replaced hardcoded URS URL with configurable variable for better flexibility.
+af83c4d7ec0d55322f3826b2c14b035871be7ec3,NO_DEFECT,Added new check for CPU limits in Kubernetes pods and updated existing checks.
+0371b61b0407893cbe456edabe56fab200f3066f,DEPENDENCY,Bumped Node.js version and pac-resolver dependency to address compatibility issues.
+8f6fd48bf45aba59055e34303d0b456cf437c833,NO_DEFECT,Refactored Traefik gateway and IAM trust role components for improved reusability.
+51361d5e2898d4d79e68cfe0e50f1c691ae17ed8,CONFIGURATION_DATA,Added configurable disk size for Dagster instances to address storage requirements.
+506330296e685305b9eaae5450bf616413b4ebb7,CONFIGURATION_DATA,Updated AWS account ID from 123456789012 to 850816134691 in README.md.
+1b64b779a8d5cf651d962176c12f8ac1f6e9fe9e,CONFIGURATION_DATA,Updated GitHub client ID and secret values in concourse CI secrets configuration.
+fe70605ed9c06b2efd8675da5567d1dd2362986c,CONFIGURATION_DATA,Added quotes around Grafana API user variables in Vector configuration files.
+698799eab4a41d99e38753f6e9170eebf54a07a1,CONFIGURATION_DATA,Modified p2p interface pattern from regex to specific interface name and updated IAM policy references.
+5475a129d25740df814250cd2cf42c10e368eaaf,CONFIGURATION_DATA,Updated VPC subnet configuration from old format to new subnet groups format in CDK context.
+86103c65469e9009934b5a31ac04ee3f88e3bd17,CONFIGURATION_DATA,Updated operator version references from v1.3.0 to v1.4.0 across multiple deployment files and Dockerfile.
+ea535a275570928b9546197eb8a2aa0e13e4b571,CONFIGURATION_DATA,Modified Traefik health check rule to include additional path for Leek API.
+7348bc0177c2a4074a224aa8b9839018fe924e4a,CONFIGURATION_DATA,Extended ECS service creation timeout from default to 30 minutes using custom timeouts transformation.
+9464f26dacdf4d7af4d61eabda1fd7dea141e855,CONFIGURATION_DATA,Changed skipAwait annotation value from boolean true to string 'true' and removed oxhead pulumi module dependency.
+f573c71387c1dbaea25bc3dc83a656e1f7a6092a,SYNTAX,Fixed Go code syntax errors including removing unused imports and correcting function call parameters.
+0420d1bcd31766b7c6696d33f6fb3d9e15e2348d,NO_DEFECT,Refactoring of type definitions in SDK files appears to be a maintenance task without functional change.
+eb1445f057daca7472517ecd176dec8903dff87a,NO_DEFECT,"Adding a new example test is a feature addition, not a defect fix."
+d65b434ac2dd95d9b7b9fb356e3a4642060bcc0a,CONFIGURATION_DATA,Removed Fastly snippets that affect URL routing configuration for NextJS application.
+2cc7dcfa522d32fea8b02ac122a9567a332c18f0,CONFIGURATION_DATA,Reverted domain configuration changes affecting monitoring service domain settings.
+5d53ae97c9a66737ae1e2610104a5d345a1559a2,CONFIGURATION_DATA,Updated instance type configuration from t2.micro to t3.micro in webserver example.
+643f6e61843d9cd8845542129e9ad639abd42979,DOCUMENTATION,Fixed comment in blue/green example to accurately describe deployment type.
+e2dc6dd43ee9744b0ca420911a7731306c85b823,CONFIGURATION_DATA,Changed learner dashboard MFE URL path from '/home' to '/dashboard/' to ensure proper Fastly routing.
+f5f7ed9dddb025a9df10563e19236ae6968acf08,DEPENDENCY,Added missing variable passing to kubeflow module for proper configuration.
+08caca6592779bf64803bcbc65735da4578103de,DOCUMENTATION,Added missing Java remote backend example to documentation.
+2dcffba5f5ef8509499cf977849be66233346d2e,CONFIGURATION_DATA,Fixed S3 provider configuration by replacing hardcoded credentials with variable references.
+3552eaea5ee128e070a04190979ac5d7b484ec8b,CONDITIONAL,Changed retry logic from 2 to 3 attempts on CI to improve build reliability.
+e185fa4e9b1f4710ff9502960b2fe07579174db9,CONFIGURATION_DATA,Added file ownership configuration (user/group) for traefik files to fix permission issues.
+4b15c4646bfe8e9844fb29ebdc68818bbb201a48,DEPENDENCY,Added explicit dependsOn relationship between Elastic Beanstalk application and environment to ensure proper deployment order.
+ea9961df26ed7e9d8ae2f248875f5e0c09469641,SECURITY,Removed hardcoded secrets in provider snippets and replaced with sensitive variables to prevent exposure.
+0f7e0a80ce28ee62ec7230a90f3e6ee57046cfa4,SERVICE,Implemented NLB and EIP-based WAN auto-join configuration for improved service discovery and availability.
+cee1b30330031c2166f6337f9fb717ed74d8e314,SERVICE,Changed ECS service from Network Load Balancer to Application Load Balancer for better HTTP routing support.
+4f82a995f6c99fe65684f997b125fe1f2f535ffd,SERVICE,Added open access policy to Elasticsearch domain to resolve connection errors from edx forum.
+9340a4d8927fbe2e3f126661daa1f94cfe382a5e,NO_DEFECT,"Added new ECR repository example and updated tests - this is a feature addition, not a defect fix."
+2d803a9b97c5dd4102b4f4041087b15d7d5f06d2,CONFIGURATION_DATA,Fixed typos in configuration keys and variable names related to email domain signup restrictions.
+4e2a308c86798b6285c7bf5da88dd8cc316c11a8,NO_DEFECT,"Added new ECR Dockerfile example and test - this is a feature addition, not a defect fix."
+f5729169bb18f9ab4847b8b30c3292b444ceba2b,CONFIGURATION_DATA,Removed CREATE SCHEMA statement from JDBC config to fix table creation issue in PostgreSQL.
+e37f5561b71661d90ea465b551f3042b2fb27e15,CONFIGURATION_DATA,Added global Lambda memory size configuration to enable larger memory usage for functions.
+b10987c494ad144859f884c36ce5a0a142bcf733,CONFIGURATION_DATA,Fixed incorrect IAM policy document structure and corrected resource references in Terraform configuration.
+47ff5624f666715850b97b340f32c435dd503907,CONFIGURATION_DATA,Updated Vault template paths and AMI source filter to correctly reference configuration data and improve deployment consistency.
+e1d16954fe6efeb992c679871b280da17a44e554,CONFIGURATION_DATA,"Added global secrets configuration for various services including mailgun, SMTP, and Heroku API keys."
+9ee738f009ab26daf9c4205b53b097ff6fab8368,SYNTAX,Updated CDK dependencies and API calls to match version 0.36.0 breaking changes including namespace updates and method signature modifications.
+5b554ca750ac5988263543b65ec415ea8581efc0,CONFIGURATION_DATA,Modified OCW beta site configuration to support QA and production environments with conditional xPro certificates domain.
+24762e34396d243f6cf5add5c3fc7343459c8a3f,CONFIGURATION_DATA,Added new sanctions check lambda function and API endpoint with proper CORS headers and error handling.
+d4d9d93ed8279a41f95a0f0cef537b7b605bcef7,CONFIGURATION_DATA,Configured Traefik middleware for basic authentication on config API endpoints and added dedicated DNS record.
+dc0affc60528146a2b36d5234d717c826f30dae2,CONDITIONAL,Added error handling to S3 bucket deletion operation in scheduled function to prevent crashes on failed deletions.
+25400158d35c61b2a5cdf2ecc7b3abdaba118301,CONFIGURATION_DATA,Changed VaultStaticSecret mount_type from kv-v2 to kv-v1 to correct secret backend configuration.
+9a2c0436152f37b139d426fb0638c6c06640186d,CONFIGURATION_DATA,Corrected MITOPEN_BASE_URL from mit-open-rc to mitopen-rc to fix domain name typo.
+ecd64756a8e80b3c9e06e0916e12225daa2df3c7,DEPENDENCY,Updated crossplane provider configuration and renamed application to resolve deployment issues.
+52ba8f9695599593743640b073c0b4c380624e99,DEPENDENCY,Fixed dependency reference from fluentbit_service_account to fluentbit_cw_service_account to correct resource ordering.
+cb41a081faf9b429c712cacd7ad26ac080faeed1,CONFIGURATION_DATA,Corrected machine configuration reference from controlplane to worker to fix Talos cluster setup.
+3b4c6fc25597e4f57982df4fd75f2232f07e2768,SYNTAX,Fixed indentation error in external_secrets Helm chart definition.
+0042fb9d22a6649eb475d7ef6a16e534afcf7e1e,IDEMPOTENCY,Removed explicit parent and depends directives to prevent circular dependency loops in Vault PKI component.
+2f4b88e93711910f786e67aad6425f291ccd4c8a,CONDITIONAL,Enhanced IAM policy check to properly validate action and resource arrays for admin privileges.
+b965c5f6835d78e27ae1c92ee191fe3132e26300,DEPENDENCY,Updated Crossplane provider configuration to use DeploymentRuntimeConfig instead of ProviderConfig to resolve deployment issues.
+725c867a181ab85241f37fc3e989a1aedc1ccd83,CONFIGURATION_DATA,Changed Avalanche daemon port from 8332 to 9650 and updated host matching logic to fix service configuration.
+41d0860c2c71e4a67189e56f745d2f312502612d,DOCUMENTATION,Renamed `kms.Registry` to `iot.Registry` and updated comments to reflect the actual use case.
+b7dd62be2cbc5c437e8e0ffcb45c8bddcb3835b1,NO_DEFECT,"Optimized build process by using embed directive to reduce memory usage, which is an internal performance improvement."
+20aa5505769458d6925888f0b578d714f8884eb9,DOCUMENTATION,Updated description comment to accurately reflect that the chain is not yet launched.
+c02aaf118c5f6f777f7b0c565ec4ac378ad0a509,NO_DEFECT,"Release version bump and dependency updates for security patches, which is a standard release process."
+51466fe8af33a95ab16aa5a8c508ba3be089c41c,DOCUMENTATION,Updated README with clarifications about Adobe Developer Account requirements and modified description for better clarity.
+6183e8376d12644d30151227ed19f35d1b2433b3,CONDITIONAL,"Fixed module loading logic to prevent processing directories multiple times, improving deterministic behavior."
+1ce18ea7eb08d974be4838d5fdfb63d20782de16,CONDITIONAL,Corrected condition name mapping for Fastly robots.txt synthetic response to ensure proper configuration.
+e3759dcd576de9c8bded56e0edaa0c0874830247,SYNTAX,Fixed syntax errors in Terraform configuration by properly interpolating variables.
+4d7e7fc35ca802f8be2c75f9d247d0a273b76048,CONFIGURATION_DATA,Removed unnecessary Consul RPC ports from agent security group configuration.
+9d9091d4e94e17c74c728451da74260b43e59832,CONFIGURATION_DATA,Updated OVS database engine version from PostgreSQL 12 to 15.
+81e610abe808ccc3052bd727a51c6fe4e23351c0,CONFIGURATION_DATA,Changed broker URL to include port and updated queue/exchange settings for Leek subscription.
+7ff277a8785328687efb378c2c648b67d852c4ce,CONDITIONAL,Added null check for ev.headers to prevent potential runtime errors in API gateway request processing.
+874d248d71158bda6c3b06d7b080d6a39c550a32,CONFIGURATION_DATA,Reordered environment variables and updated configuration values in .env.example file.
+5137f17f3fc174c54d9c4d901a3c53692ee751d0,NO_DEFECT,"Feature addition for cache and RDS monitoring with cloudwatch alarms, no defect present."
+15b174657ded9b87454e388bd234795c430d0c7a,NO_DEFECT,"Formatting fixes and configuration updates for code style, no functional defect."
+77c466fdea071563c1a276ce8d362c2b7ccc591a,SYNTAX,Fixed missing comma in Docker build configuration and corrected image reference usage in Go code.
+98ddb9872ee512c99c1b69bc270c6a824fc538f9,NO_DEFECT,"Release update and dependency version bumps, no functional defect identified."
+550d0cc927df1a62d69acdb184576ec3a583e5f8,SYNTAX,Updated import statements and resource instantiation to use proper class references in Python documentation example.
+466d84b5693747894a582424030ba3231b7fab89,SECURITY,Enhanced API gateway security by changing authorization to AWS IAM and fixing URI path format.
+328158b7d8202c04d95adb209f67f8d376218640,CONFIGURATION_DATA,Fixed file path reference from templates to files directory and corrected variable interpolation syntax in docker-compose configuration.
+9e00c4192170771ddcfdede3ac8f5c5be27cb522,CONFIGURATION_DATA,Removed invalid URI parameter 'ssl=true' from Redis connection string to fix configuration.
+f469f0cc078bbd617fc676506ab47c2840acd82d,NO_DEFECT,"Migrating Vault to OL-Autoscaling components is a refactoring change, not a defect fix."
+cdac6d7976ba574f04e866c2562c48d36a281c3b,CONFIGURATION_DATA,Fixed typo in bastion node configuration parameters: 'basiton' to 'bastion'.
+976def3faca6418437c095b3d0c5d81d24f99c69,IDEMPOTENCY,Changed SNS topic creation to be non-idempotent to prevent race conditions and ensure consistent behavior.
+b2471ed7b785918435a1176bdd9f6600e274f5e9,CONFIGURATION_DATA,Added custom midgard indexer configuration file with database credentials and API endpoints.
+b6d9fa9898e9ae2e2054effc8e500a60acf8b4c3,DEPENDENCY,Added explicit AWS provider configuration to resolve authentication issues in Concourse environment.
+8b8963398af55a9c580200212a12044d45a3f28e,NO_DEFECT,"Removed unnecessary kubectlEnabled flag from EKS cluster configuration, which is a cleanup rather than a defect fix."
+cf0c6e46683b8dc9638f12a28fcb444865aede75,CONFIGURATION_DATA,Changed CloudFront origin from S3 bucket source to custom S3 website endpoint for static site configuration.
+ace64b299b455e620ba8fe010cc95456c60bc730,CONFIGURATION_DATA,Added IAM policy and Vault role for Airbyte S3 source access to properly configure permissions.
+339c5e539b03c32aed03f020d5b118336f9a9524,CONFIGURATION_DATA,Updated MITx Online database engine version from PostgreSQL 12 to 13.
+b44278cfc415fb4c1f59b03c6b77dfacd4785102,DOCUMENTATION,"Removed hardcoded resource names from examples to use PREFIX variable instead, updating documentation."
+b9292853ba2ec5c3d181a7bafe5136b1b70cb479,SYNTAX,"Fixed formatting and syntax issues in Terraform configuration files including spacing, indentation, and variable reference syntax."
+d1522fa1027446de10daa4c58db54db64e918de7,CONFIGURATION_DATA,Updated RDS engine version specifications from deprecated format to new API format in multiple Python files.
+65ebe27f12cc6fee6fcc7e02a2a30d55f5f9c91d,DEPENDENCY,Updated CDK package versions and fixed ECS cluster configuration to use EcsOptimizedAmi instead of AmazonLinuxImage.
+aa0970f2b5ace59f2df41dd29d2b1f9236652bd6,CONFIGURATION_DATA,Added OTEL metrics collection configuration and updated Airbyte metrics reporting settings.
+5337e5f8413c101317e307000fd1b2312e9d2b2e,SYNTAX,Fixed ESLint warnings and added linting rules for unused variables and semicolons in TypeScript projects.
+d2a762b5b44b75bc28c056e78ac68efa555f3e25,CONFIGURATION_DATA,Updated RDS instance class references to use new instance_type parameter in Python CDK examples.
+4e3c67420c605187815dd5d4accad05904a791fd,CONFIGURATION_DATA,Added assignPublicIp property to FargateService to control public IP assignment and defaulted to non-public.
+327a5d19ae578fe338778cfc657b3ad8b651aa7c,CONFIGURATION_DATA,Added required version property to EKS cluster configuration to fix compilation errors.
+713ceda318ccf45b0029fdfd32115084e1bd0667,NO_DEFECT,Removed old workflow files and updated gitignore to exclude VSCode files and specific AMI for testing consistency.
+be7d90e9f73599e113d566df8a2ed7251f13ffe2,DEPENDENCY,"Updated pulumi-aws to v6 and pulumi-docker to v4, resolving dependency version conflicts and breaking changes."
+7b07c07de03612f801f5d35728a2e4ffe65c0599,CONDITIONAL,Changed HTTP status code from 301 to 302 for redirects to allow changes to the indirection.
+995374b472e0b40b96b38bb0ed5a3bf484e27de5,IDEMPOTENCY,Fixed Pydantic validator behavior to ensure proper resource creation by assigning attributes on each iteration to trigger validators.
+54bf658d9a3ca02c946b360f1aaf764f69a40ae7,CONFIGURATION_DATA,Updated fluent-bit Helm chart version from 0.16.6 to 0.19.1 to fix multiline errors in logs.
+cd8eee5db511b4fd6f2b84b7a7be19dfb82cd06f,IDEMPOTENCY,Modified setup scripts to handle idempotent execution by checking for existing resources before creation.
+60501930a889be7d0ab7da0b7f3b1ff2ff29e92e,IDEMPOTENCY,Reverted non-idempotent SNS topic creation workaround to restore proper idempotent behavior.
+2913893702f4856ab43955b682c3db7daf80f575,SYNTAX,Fixed linting issue by adding missing comma in AWS IAM role policy attachment declaration.
+d58ff8d284766e824f8ae74542591001096e4421,DOCUMENTATION,"Corrected typo in parameter name from ""PPipeline"" to ""PipelineParam""."
+dc1b333f2bd35dca99017562e24572ea39da37d8,CONDITIONAL,Added explicit dependency on namespace creation to fix sporadic Calico deployment errors.
+e8e0151596d860f7bac99ab46b13a07701d3e26c,CONFIGURATION_DATA,Updated AKS Kubernetes version from 1.14.6 to 1.18.6 and fixed dependency version in requirements.txt.
+190ea08ab7c58ee90521e2cc89676de36291a14f,CONFIGURATION_DATA,Added configuration for number of AZs in auto cluster to fix ECS cluster setup.
+f10e90f834b592809a5a9fe95ad56afeba3b51e5,CONDITIONAL,Fixed boolean treatment in Terraform plan parser to correctly handle string representations of booleans.
+ba80eff773ff4f116a71e1fd199dba15cc69f23e,CONDITIONAL,Removed extraneous 503 synthetic response and reorganized Fastly VCL conditions to fix robots.txt rendering.
+bd2972861827940fe5cbd16c3fd5fa8856c59af2,CONDITIONAL,Fixed null values in Concourse teams and tags configuration to properly set worker properties.
+54534fa839439e94411816aa104fc0abcc51e6a0,CONFIGURATION_DATA,Updated Azure examples to remove hardcoded location in resource group and added documentation for setting location via config.
+417037c84f3f9a0864e60cace5f3c3aacd654581,CONDITIONAL,Changed check-wallet lambda to use query string parameters instead of path arguments for better API design.
+00eb6119505380832189c0f69c5074417fd2ae78,CONFIGURATION_DATA,Fixed missing ARNs and clamAV-related names in Terraform configurations.
+855f7c950b75f3b3296bc500641c6b8d48068b14,CONFIGURATION_DATA,Removed elasticsearch/host key from Notes Pulumi code to prevent overwriting values used by other services.
+18359e94abcc68b34891ce57752d0209d27e4126,CONFIGURATION_DATA,Fixed empty logging buckets and retention policies in CDK sample application.
+1443a17090ee7407c9d9dfa34ae4698e5d2aeaa5,NO_DEFECT,Applied Ruff fixes to suppress linting warnings without changing functionality.
+89e3616548b372044367872736ec6a5ae339bc13,NO_DEFECT,"Adds new cloudfunctions.CallbackFunction abstraction and examples, which is a feature addition, not a defect fix."
+8e6afacd062988f9507394d791be4aed0a963f6a,CONFIGURATION_DATA,"Changed SecurityGroups to VpcSecurityGroupIds for AWS EC2 instance, correcting a configuration that didn't allow updates."
+c95cf4402c8d3c1f71440c566a0b3d8caa2090b2,CONDITIONAL,Fixed verification logic for ManagedNodeGroup creation in clusters with API authentication mode by adding conditional check for access entries support.
+13c1baf7882b50a3a076c6dee442f0785659fa41,NO_DEFECT,"Adds security checking tools (ASH, Bandit, CDK Nag) as new features, not defect fixes."
+2664dbcc87c73cb17c541878dea1c0d5e91b57a0,CONDITIONAL,"Corrects Aspect application scope from individual resource to entire stack, fixing example usage logic."
+2bbe46a091f677134448fef80e855c2ec5889ad4,CONFIGURATION_DATA,"Adds auto_tune_options workaround for OpenSearch deployment on T2/T3 instances, correcting a configuration issue."
+c985b879fbed067e615af9c7ee257ef54d939c14,CONDITIONAL,"Updates EKS cluster example to use renamed connectAutoScalingGroupCapacity method, fixing a breaking change in CDK 1.65.0."
+65d5be386d81da81f9fbaee07099776720c602c0,SYNTAX,Fixes incorrect function call syntax in AutoScalingFargateService.__init__ by changing *kwargs to **kwargs.
+4805b28bf65365217bcf4f06ab51c7e54b689949,SECURITY,"Restricts S3 put object permissions to exclude ACL actions, improving security by limiting permissions."
+c678e6762b3ea2085996db43b48b93b1344a37ab,NO_DEFECT,"Extends restricted NACLs parameter to support both tooling and backend VPCs, which is a feature enhancement."
+f460b2723878c5babd6ddba016d56f4dbb5b03e1,NO_DEFECT,Refactoring test configurations and fixing refresh behavior does not indicate a defect in the IaC itself.
+46d2178779443a4fb3a5368b218eb52ab4dc7feb,SECURITY,Enabled SQS server-side encryption to improve data protection.

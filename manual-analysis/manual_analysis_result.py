@@ -221,7 +221,8 @@ cat_err.to_csv(OUT_DIR / "rq2e_errors_per_category.csv")
 
 fig, ax = plt.subplots(figsize=(11, 4))
 cat_err.T.plot(kind="bar", ax=ax,
-               color=[PALETTE[m] for m in cat_err.index],
+               color=["#4e50d0", "#ff7f00", "#B2B2B2"],
+            #    color=[PALETTE[m] for m in cat_err.index],
                edgecolor="white")
 ax.set_title("Error Count per Oracle Category and Model")
 ax.set_xlabel("Oracle Category")
@@ -471,440 +472,43 @@ ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
 ax.set_xticklabels(pivot_inter.index, rotation=0)
 ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
 save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
 
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
+# ── RQ3-G: ACID Tool: Semantic requirement × label certainty interaction ─────────────────
+print("\n[RQ3-G] ACID — Semantic requirement × label certainty error rate interaction")
+
+ACID_FILE = Path("../oracle/oracle_acid_answers.csv")
+acid = pd.read_csv(ACID_FILE)
+
+acid_merged = acid.merge(
+    ecms[["hash", "semantic_requirement", "label_certainty"]],
+    on="hash", how="left"
+)
+
+# ACID has no outcome-type column — an error is simply acid-normalized != oracle-normalized
+acid_merged["is_error"] = (
+    acid_merged["acid-normalized"] != acid_merged["oracle-normalized"]
+).astype(int)
+
+acid_inter_agg = (
+    acid_merged.groupby(["semantic_requirement", "label_certainty"])["is_error"]
     .agg(["sum", "count"])
     .rename(columns={"sum": "errors", "count": "total"})
 )
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
+acid_inter_agg["error_rate"] = acid_inter_agg["errors"] / acid_inter_agg["total"]
+print(acid_inter_agg.to_string())
+acid_inter_agg.to_csv(OUT_DIR / "rq3g_acid_semantic_x_certainty_interaction.csv")
 
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
+acid_pivot_inter = acid_inter_agg["error_rate"].unstack(level="label_certainty")
 fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
+acid_pivot_inter.plot(kind="bar", ax=ax,
+                 color=["#4e50d0", "#ff7f00"], edgecolor="white")
+ax.set_title("ACID Error Rate by Semantic Requirement × Label Certainty")
 ax.set_xlabel("Semantic Requirement")
 ax.set_ylabel("Error Rate")
 ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
+ax.set_xticklabels(acid_pivot_inter.index, rotation=0)
 ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
-ax.set_title("Oracle Category Distribution — AMBIGUOUS ECMs")
-ax.set_xlabel("Oracle Category")
-ax.set_ylabel("Count")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
-label_bars(ax)
-save(fig, "rq3e_ambiguous_oracle_distribution.png")
-
-# ── RQ3-F: Semantic requirement × label certainty interaction ─────────────────
-print("\n[RQ3-F] Semantic requirement × label certainty error rate interaction")
-interaction = all_merged.copy()
-interaction["is_error"] = interaction["outcome-type"].isin(ERROR_TYPES).astype(int)
-inter_agg = (
-    interaction.groupby(["semantic_requirement", "label_certainty"])["is_error"]
-    .agg(["sum", "count"])
-    .rename(columns={"sum": "errors", "count": "total"})
-)
-inter_agg["error_rate"] = inter_agg["errors"] / inter_agg["total"]
-print(inter_agg.to_string())
-inter_agg.to_csv(OUT_DIR / "rq3f_semantic_x_certainty_interaction.csv")
-
-pivot_inter = inter_agg["error_rate"].unstack(level="label_certainty")
-fig, ax = plt.subplots(figsize=(7, 4))
-pivot_inter.plot(kind="bar", ax=ax,
-                 color=["#66c2a5", "#fc8d62"], edgecolor="white")
-ax.set_title("Error Rate by Semantic Requirement × Label Certainty\n(all models combined)")
-ax.set_xlabel("Semantic Requirement")
-ax.set_ylabel("Error Rate")
-ax.yaxis.set_major_formatter(mticker.PercentFormatter(xmax=1))
-ax.set_xticklabels(pivot_inter.index, rotation=0)
-ax.legend(title="Label Certainty", bbox_to_anchor=(1, 1))
-save(fig, "rq3f_semantic_x_certainty_interaction.png")
+save(fig, "rq3g_acid_semantic_x_certainty_interaction.png")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Summary tables for paper

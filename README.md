@@ -1,4 +1,4 @@
-# Benchmarking LLMs against the ACID Rule-Based Baseline for IaC Defect Detection: A Semantic and Failure Taxonomy Analysis
+# Benchmarking LLMs for IaC Defect Detection: A Semantic and Failure Taxonomy Analysis
 
 A scientific-grade system for detecting and classifying Infrastructure as Code (IaC) defects, initially using state-of-the-art LLMs (DeepSeek-v3, GPT-5.2, and Qwen3-coder) with deterministic, reproducible analysis designed for rigorous empirical research. This repository serves as the public replication package, featuring the Augmented 132-ECM Evaluation Corpus and a two-level failure taxonomy.
 
